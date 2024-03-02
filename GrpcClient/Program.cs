@@ -3,12 +3,13 @@ using Grpc.Net.Client;
 using TodoAppService;
 
 
+
 namespace GrpcClient;
 internal class Program
 {
-    private static async void Main(string[] args)
+     static async Task Main(string[] args)
     {
-        const string ServerAddress = "";
+        const string ServerAddress = "http://localhost:5103";
 
         var channel = GrpcChannel.ForAddress(ServerAddress);
 
@@ -38,9 +39,13 @@ internal class Program
             await Console.Out.WriteLineAsync(ex.Message);
 
         }
+       
+        
         await channel.ShutdownAsync();
 
         await Console.Out.WriteLineAsync("Press any key to exit ");
+
+       
 
 
     }
